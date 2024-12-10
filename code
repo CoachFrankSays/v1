@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>90s Website</title>
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #f0f0f0;
+            color: black;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            border: 2px solid black;
+            padding: 10px;
+            background-color: white;
+        }
+        .form-group {
+            margin: 10px 0;
+        }
+        button {
+            background-color: black;
+            color: white;
+            font-family: "Courier New";
+            border: 2px solid black;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: white;
+            color: black;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="login-container">
+        <h1>Welcome to the 90s Game</h1>
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter password">
+        </div>
+        <div class="form-group">
+            <button onclick="login()">Login</button>
+            <button onclick="createAccount()">Create Account</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="game-container">
+        <h1>Welcome to the Game of Life</h1>
+        <p>Buy and sell stocks to earn money. Use your money to buy businesses and items to make your profile unique and show off your wealth.</p>
+        <p>Add friends and message them with your phone to collaborate on business ideas. Good luck!</p>
+        <button onclick="openPhone()">Phone</button>
+    </div>
+
+    <div class="container hidden" id="phone-container">
+        <h1>Your Phone</h1>
+        <p>Send a message to a friend:</p>
+        <div class="form-group">
+            <label for="friend-name">Friend's Username:</label>
+            <input type="text" id="friend-name" placeholder="Enter friend's username">
+        </div>
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" placeholder="Type your message here"></textarea>
+        </div>
+        <button onclick="sendMessage()">Send Message</button>
+        <button onclick="closePhone()">Close Phone</button>
+        <p id="message-status"></p>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            if (username && password) {
+                alert("Welcome to the Game of Life!");
+                document.getElementById("login-container").classList.add("hidden");
+                document.getElementById("game-container").classList.remove("hidden");
+            } else {
+                alert("Please enter a username and password!");
+            }
+        }
+
+        function createAccount() {
+            alert("Account creation is not implemented in this simple demo.");
+        }
+
+        function openPhone() {
+            document.getElementById("game-container").classList.add("hidden");
+            document.getElementById("phone-container").classList.remove("hidden");
+        }
+
+        function closePhone() {
+            document.getElementById("phone-container").classList.add("hidden");
+            document.getElementById("game-container").classList.remove("hidden");
+        }
+
+        function sendMessage() {
+            const friendName = document.getElementById("friend-name").value;
+            const message = document.getElementById("message").value;
+            if (friendName && message) {
+                document.getElementById("message-status").textContent = 
+                    `Message sent to ${friendName}: "${message}"`;
+            } else {
+                alert("Please enter a friend's username and a message!");
+            }
+        }
+    </script>
+</body>
+</html>
